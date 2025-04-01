@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>Jumbotron Example</h1>
+        <p>Lorem ipsum...</p>
+      </div>
+
+      <!-- widh -->
+       <div class="mx-3 mt-4">
+
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <!-- form -->
+      <form method="POST" class="row g-3">
+        <div class="col-md-6 dropdown">
+            <label for="inputEmail4" class="form-label">Merek</label>
+            <input type="text" class="form-control" name="dropdownInput" id="dropdownInput" placeholder="Ketik untuk mencari..." data-bs-toggle="dropdown" aria-expanded="false">
+            <ul class="dropdown-menu w-100" id="dropdownMenu"></ul>
+        </div>
+
+
+        <div class="col-md-6">
+            <label for="processor" class="form-label">Pilih Processor:</label>
+            <select id="processor" name="processor" class="form-select">
+                {% for name, value in processors.items() %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="col-md-6">
+            <label for="graphic_card" class="form-label">Pilih Kartu Grafik:</label>
+            <select id="graphic_card" name="graphic_card" class="form-select">
+                {% for name, value in graphic_cards.items() %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="memory_type" class="form-label">Pilih Tipe Memori:</label>
+            <select id="memory_type" name="memory_type" class="form-select">
+                {% for name, value in memory_types.items() %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="card_type" class="form-label">Pilih Jenis Kartu:</label>
+            <select id="card_type" name="card_type" class="form-select">
+                {% for name, value in card_types.items() %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- numeric -->
+        <div class="col-md-6">
+            <label for="ghz" class="form-label">Temel İşlemci Hızı (GHz)</label>
+            <input id="ghz" name="ghz" class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+        </div>
+
+        <div class="col-md-6">
+            <label for="islemci_frekansi" class="form-label">İşlemci Frekansı</label>
+            <input id="islemci_frekansi" name="islemci_frekansi" class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+        </div>
+
+        <div class="col-md-6">
+            <label for="Ram" class="form-label">Ram (Sistem Belleği)</label>
+            <input id="Ram" name="Ram" class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+        </div>
+
+        <div class="col-md-6">
+            <label for="arttiri" class="form-label">Arttırılabilir Azami Bellek</label>
+            <input id="arttiri" name="arttiri" class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+        </div>
+
+        <div class="col-md-6">
+            <label for="ssd" class="form-label">SSD Kapasitesi</label>
+            <input id="ssd" name="ssd" class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+        </div>
+
+        <div class="col-md-6">
+            <label for="ekran" class="form-label">Ekran Kartı Hafızası</label>
+            <input id="ekran" name="ekran" class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+        </div>
+
+
+        <div class="md-6 mb-3">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+      <!-- form end -->
+    </div>
+    <div class="col">
+        <h2>{{ hasil }}</h2>
+      </div>
+    <!-- width end -->
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+    const brands = {
+    'ACER': 0, 'ARTITEKNİKPC': 1, 'ASUS': 2, 'Apple': 3, 'Avantron': 4, 'CASPER': 5, 'Canar': 6, 
+    'ColdPower': 7, 'Corsair': 8, 'DAGMOR': 9, 'DMC': 10, 'Dell': 11, 'EFS TEKNOLOJİ': 12, 
+    'GAMELİNE': 13, 'Gamepage': 14, 'Gaming Game': 15, 'Gigabyte': 16, 'Grundig': 17, 
+    'Güneysu Gaming': 18, 'HP': 19, 'IZOLY': 20, 'Jedi': 21, 'LENOVO': 22, 'Life Teknoloji': 23, 
+    'METSA': 24, 'MSI': 25, 'OEM': 26, 'OXpower': 27, 'Oksid Bilişim Teknoloji': 28, 'PCDEPO': 29, 
+    'Quadro': 30, 'Quantum Gaming': 31, 'RAMTECH': 32, 'ROGAME': 33, 'RaXius': 34, 'Redrock': 35, 
+    'Revenge': 36, 'Rexdragon': 37, 'SECLIFE': 38, 'Super': 39, 'TOPLAMA': 40, 'TRİNİTY': 41, 
+    'TURBOX': 42, 'Technopc': 43, 'Tiranozor': 44, 'Tiwox': 45, 'UCARTECH': 46, 'WARBOX': 47, 
+    'XASER': 48, 'Zeiron': 49, 'Zetta': 50, 'jetucuzal': 51
+};
+
+// Ambil elemen dropdown
+const dropdownMenu = document.getElementById("dropdownMenu");
+const dropdownInput = document.getElementById("dropdownInput");
+
+// Fungsi untuk memperbarui dropdown berdasarkan input
+function updateDropdown() {
+    let filter = dropdownInput.value.toLowerCase();
+    dropdownMenu.innerHTML = ""; // Kosongkan menu
+
+    Object.keys(brands).forEach(brand => {
+        if (brand.toLowerCase().includes(filter)) {
+            let li = document.createElement("li");
+            let a = document.createElement("a");
+            a.href = "#";
+            a.className = "dropdown-item";
+            a.textContent = brand;
+            a.dataset.value = brands[brand]; // Simpan nilai label encoded
+            a.addEventListener("click", function() {
+                dropdownInput.value = brand; // Isi input dengan pilihan
+                dropdownMenu.classList.remove("show"); // Sembunyikan dropdown
+                console.log("Terpilih:", brand, "=>", brands[brand]); // Debug output
+            });
+            li.appendChild(a);
+            dropdownMenu.appendChild(li);
+        }
+    });
+
+    if (filter !== "" && dropdownMenu.children.length > 0) {
+        dropdownMenu.classList.add("show");
+    } else {
+        dropdownMenu.classList.remove("show");
+    }
+}
+
+// Tambahkan event listener untuk input
+dropdownInput.addEventListener("keyup", updateDropdown);
+dropdownInput.addEventListener("focus", updateDropdown);
+    
+    </script>
+</html>
+
